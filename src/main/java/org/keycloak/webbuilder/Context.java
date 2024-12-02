@@ -30,6 +30,8 @@ public class Context {
     private Blogs blogs;
     private Guides guides;
     private GuidesMetadata guidesMetadata;
+    private Releases releases;
+    private ReleasesMetadata releasesMetadata;
     private News news;
 
     private FreeMarker freeMarker;
@@ -64,7 +66,9 @@ public class Context {
         extensions = new Extensions(extensionsDir);
         blogs = new Blogs(blogDir, versions, config, freeMarker, asciiDoctor);
         guidesMetadata = new YamlParser().read(new File(getWebSrcDir(),"/guides.yaml"), GuidesMetadata.class);
+        releasesMetadata = new YamlParser().read(new File(getWebSrcDir(),"/releases.yaml"), ReleasesMetadata.class);
         guides = new Guides(guidesMetadata, tmpDir, getWebSrcDir(), asciiDoctor);
+        releases = new Releases(releasesMetadata, tmpDir, getWebSrcDir(), asciiDoctor);
         news = new News(newsDir, blogs, config);
 
         freeMarker.init(this);
@@ -157,6 +161,10 @@ public class Context {
 
     public GuidesMetadata getGuidesMetadata() {
         return guidesMetadata;
+    }
+
+    public ReleasesMetadata getReleasesMetadata() {
+        return releasesMetadata;
     }
 
     public File getGuidesDir() {

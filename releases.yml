@@ -1,0 +1,4 @@
+sources:
+  - id: keycloak-client
+    dir: target/keycloak-client-release-$$VERSION$$
+    github: https://github.com/keycloak/keycloak-client/tree/main/docs/releases/
