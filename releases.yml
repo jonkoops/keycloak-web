@@ -1,0 +1,5 @@
+sources:
+  - id: keycloak
+    repo: keycloak/keycloak
+  - id: keycloak-client
+    repo: keycloak/keycloak-client
